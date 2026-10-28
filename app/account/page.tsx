@@ -5,12 +5,12 @@ import Header from "@/components/Header";
 import { Book, ChevronRight, User } from "@/components/Icons";
 import { useDemoUser } from "@/lib/useDemoUser";
 
-export default function ProfilePage() {
+export default function AccountPage() {
   const { user, setName } = useDemoUser();
 
   return (
     <main className="pb-32">
-      <Header title="Profile" />
+      <Header title="Account" />
       <div className="flex flex-col items-center px-4 pt-8">
         <div className="grid h-24 w-24 place-items-center rounded-full bg-gradient-to-br from-accent to-[#5b4bff] text-4xl font-black">
           {user?.name ? user.name.trim()[0]?.toUpperCase() : <User className="h-10 w-10" />}

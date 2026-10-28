@@ -6,7 +6,7 @@ import { dateLabel, dateStr } from "@/lib/dates";
 import { usd } from "@/lib/money";
 import Header from "@/components/Header";
 import VenueArt from "@/components/VenueArt";
-import { Clock, Pin } from "@/components/Icons";
+import { Clock } from "@/components/Icons";
 
 export const dynamic = "force-dynamic";
 
@@ -31,9 +31,6 @@ export default async function VenuePage({ params }: { params: Promise<{ slug: st
       <div className="flex flex-col items-center px-4 text-center">
         <VenueArt {...venue} className="h-36 w-36 rounded-xl border border-white/20 shadow-2xl" />
         <h1 className="mt-5 text-[28px] font-bold leading-tight">{venue.name}</h1>
-        <p className="mt-1 flex items-center gap-1.5 text-[15px] text-white/65">
-          <Pin /> {venue.address}
-        </p>
         <p className="mt-1 flex items-center gap-1.5 text-sm text-white/50">
           <Clock /> {venue.hours}
         </p>

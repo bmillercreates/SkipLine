@@ -70,7 +70,6 @@ export default async function VenuesPage() {
               <VenueArt {...v} className="h-[104px] w-[104px] shrink-0 rounded-lg" />
               <div className="min-w-0 flex-1 py-1 pr-2">
                 <p className="truncate text-[21px] font-bold">{v.name}</p>
-                <p className="truncate text-[15px] text-white/60">{v.address.replace(", Larkspur Falls", "")}</p>
                 <div className="mt-2 flex flex-wrap gap-1.5">
                   {v.options.length === 0 && <span className="text-xs text-white/50">No passes tonight</span>}
                   {v.options.map((o) => {

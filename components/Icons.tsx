@@ -40,3 +40,9 @@ export const Book = ({ className = "h-6 w-6" }: P) => (
 export const Tag = ({ className = "h-6 w-6" }: P) => (
   <svg viewBox="0 0 24 24" className={className} {...base}><path d="M3.5 12.3V4.5a1 1 0 011-1h7.8l8.2 8.2a1 1 0 010 1.4l-7.4 7.4a1 1 0 01-1.4 0z" /><circle cx="8" cy="8" r="1.5" /></svg>
 );
+export const Coin = ({ className = "h-7 w-7" }: P) => (
+  <svg viewBox="0 0 24 24" className={className} {...base}><circle cx="12" cy="12" r="9" /><path d="M14.5 9.2c-.5-.8-1.5-1.2-2.5-1.2-1.4 0-2.5.8-2.5 2s1.1 1.6 2.5 2 2.5.8 2.5 2-1.1 2-2.5 2c-1 0-2-.4-2.5-1.2M12 6.5V8M12 16v1.5" /></svg>
+);
+export const Cards = ({ className = "h-7 w-7" }: P) => (
+  <svg viewBox="0 0 24 24" className={className} {...base}><rect x="8" y="3.5" width="11" height="15" rx="1.5" transform="rotate(12 13.5 11)" /><path d="M6.8 7.3L5 7.7a1.5 1.5 0 00-1.1 1.8l2.5 10.3A1.5 1.5 0 008.2 21l6-1.5" /></svg>
+);

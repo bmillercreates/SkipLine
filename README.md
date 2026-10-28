@@ -17,7 +17,7 @@ lives on GitHub, and every push to `main` redeploys the site automatically.
 3. **Add the signing secret:** in **Settings → Environment Variables**, add `PASS_SIGNING_SECRET` with a long random
    value. You can generate one with:
    `node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"`
-4. **Deploy.** The build creates the tables and seeds the 8 bars. After that, the site keeps the next 7 nights
+4. **Deploy.** The build creates the tables and seeds the 5 bars. After that, the site keeps the next 7 nights
    stocked on its own.
 
 Changing the secret makes all existing passes fail with "Invalid signature". That's expected, since they were
@@ -32,7 +32,7 @@ Common edits:
 
 | To change… | Edit |
 | --- | --- |
-| Bars, addresses, prices, featured events | `lib/seed.ts` (redeploy; existing nights keep their old prices) |
+| Bars, prices, featured events | `lib/seed.ts` (redeploy; existing nights keep their old prices) |
 | Service fee | `lib/money.ts` |
 | Pass card colors | `lib/passStyle.ts` |
 | Background, cards, buttons | `app/globals.css`, `tailwind.config.ts` |
@@ -84,7 +84,9 @@ app/
   venues/[slug]/page.tsx    Venue page with passes grouped by date
   checkout/[optionId]/      Checkout + "Place Demo Order"
   passes/                   My Passes (card, QR, staff redeem)
-  profile/page.tsx          Passholder name, links
+  account/page.tsx          Passholder name, links
+  points/page.tsx           Points balance (10 per $1 spent)
+  drops/page.tsx            Drops (empty state)
   how-it-works/             Explainer + forge demo
   api/                      venues, orders, passes, redeem, demo/forge
 components/                 Header, BottomNav, VenueArt (generated logos), icons

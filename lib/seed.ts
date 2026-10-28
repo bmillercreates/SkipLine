@@ -1,4 +1,4 @@
-// Seed data: 8 fictional bars in the fictional college town of Larkspur Falls.
+// Seed data: 5 fictional bars in the fictional college town of Larkspur Falls.
 // Used by `prisma db seed` and by the site itself to keep the next 7 nights stocked.
 import type { PrismaClient } from "@prisma/client";
 import { addDays, dateStr } from "./dates";
@@ -57,18 +57,6 @@ const VENUES: SeedVenue[] = [
     prices: { skip: 800, cover: 300, combo: 1000 },
   },
   {
-    slug: "owl-and-anchor",
-    name: "The Owl & Anchor",
-    shortName: "OWL & ANCHOR",
-    address: "301 Mill Race Rd, Larkspur Falls",
-    blurb: "Nautical dive bar on the river with a jukebox older than you.",
-    hours: "Daily 5 PM – 2 AM",
-    colorA: "#0c4a6e",
-    colorB: "#22d3ee",
-    motif: "waves",
-    prices: { skip: 1000, cover: 500, combo: 1300 },
-  },
-  {
     slug: "lantern-room",
     name: "Lantern Room",
     shortName: "LANTERN",
@@ -82,18 +70,6 @@ const VENUES: SeedVenue[] = [
     prices: { skip: 1200, cover: 800, combo: 1800 },
   },
   {
-    slug: "basement-bluebird",
-    name: "Basement Bluebird",
-    shortName: "BLUEBIRD",
-    address: "9 Larkspur Ave (Lower Level), Larkspur Falls",
-    blurb: "Underground karaoke den. Sign-up sheet fills by 10.",
-    hours: "Tue–Sat 8 PM – 2 AM",
-    colorA: "#1e3a8a",
-    colorB: "#60a5fa",
-    motif: "rays",
-    prices: { skip: 700, cover: 500, combo: 1100 },
-  },
-  {
     slug: "velvet-tractor",
     name: "Velvet Tractor",
     shortName: "VELVET TRACTOR",
@@ -104,18 +80,6 @@ const VENUES: SeedVenue[] = [
     colorB: "#fb7185",
     motif: "grid",
     prices: { skip: 1000, cover: 700, combo: 1500 },
-  },
-  {
-    slug: "hatchs-hideaway",
-    name: "Hatch's Hideaway",
-    shortName: "HATCH'S",
-    address: "204 Wren Ave, Larkspur Falls",
-    blurb: "Arcade bar with pinball, skee-ball, and a patio fire pit.",
-    hours: "Daily 3 PM – 1 AM",
-    colorA: "#134e4a",
-    colorB: "#2dd4bf",
-    motif: "dots",
-    prices: { skip: 900, cover: 400, combo: 1200 },
   },
 ];
 
@@ -131,6 +95,8 @@ const NIGHTS = 7;
 // upcoming nights without touching passes that were already bought.
 export async function seed(prisma: PrismaClient) {
   const today = dateStr();
+  // Bars removed from the list above are removed from the site too.
+  await prisma.venue.deleteMany({ where: { slug: { notIn: VENUES.map((v) => v.slug) } } });
   for (const [i, v] of VENUES.entries()) {
     const data = {
       name: v.name,
