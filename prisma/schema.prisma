@@ -1,0 +1,62 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL") // pooled connection (used by the app)
+  directUrl = env("DATABASE_URL_UNPOOLED") // direct connection (used for schema changes)
+}
+
+model Venue {
+  id             String       @id @default(cuid())
+  slug           String       @unique
+  name           String
+  shortName      String
+  address        String
+  blurb          String
+  hours          String
+  colorA         String
+  colorB         String
+  motif          String
+  featuredTitle  String?
+  featuredDetail String?
+  featuredDate   String?
+  options        PassOption[]
+  passes         Pass[]
+}
+
+model PassOption {
+  id          String @id @default(cuid())
+  venueId     String
+  venue       Venue  @relation(fields: [venueId], references: [id], onDelete: Cascade)
+  kind        String // SKIP | COVER | COMBO
+  name        String
+  description String
+  priceCents  Int
+  date        String // YYYY-MM-DD, the night the pass is good for
+  quantity    Int
+  sold        Int    @default(0)
+  passes      Pass[]
+
+  @@unique([venueId, name, date])
+}
+
+model Pass {
+  id         String     @id @default(cuid())
+  optionId   String
+  option     PassOption @relation(fields: [optionId], references: [id], onDelete: Cascade)
+  venueId    String
+  venue      Venue      @relation(fields: [venueId], references: [id], onDelete: Cascade)
+  ownerId    String
+  holderName String
+  quantity   Int
+  unitCents  Int
+  feeCents   Int
+  totalCents Int
+  createdAt  DateTime   @default(now())
+  expiresAt  DateTime
+  redeemedAt DateTime?
+
+  @@index([ownerId])
+}

@@ -1,0 +1,39 @@
+{
+  "name": "skipline",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Skipline: a class-project demo of how bar line-skip and cover pass apps work.",
+  "scripts": {
+    "setup": "node scripts/setup.mjs && prisma db push && prisma db seed",
+    "predev": "npm run setup",
+    "dev": "next dev",
+    "build": "prisma generate && prisma db push --skip-generate && prisma db seed && next build",
+    "start": "next start",
+    "db:reset": "prisma db push --force-reset && prisma db seed",
+    "postinstall": "prisma generate"
+  },
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
+  },
+  "dependencies": {
+    "@prisma/client": "5.22.0",
+    "next": "15.5.28",
+    "qrcode.react": "4.2.0",
+    "react": "19.1.1",
+    "react-dom": "19.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "22.18.0",
+    "@types/react": "19.1.12",
+    "@types/react-dom": "19.1.9",
+    "autoprefixer": "10.4.21",
+    "postcss": "8.5.6",
+    "prisma": "5.22.0",
+    "tailwindcss": "3.4.17",
+    "tsx": "^4.20.5",
+    "typescript": "5.9.2"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
