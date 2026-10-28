@@ -88,7 +88,7 @@ export default function PassesClient() {
   const past = (passes ?? []).filter((p) => !isActive(p) && p.id !== (showSelected ? selected?.id : ""));
 
   return (
-    <main className="pb-32">
+    <main className="pb-[92px]">
       <Header title="My Passes" compact />
 
       {passes === null ? (
@@ -102,7 +102,8 @@ export default function PassesClient() {
           </Link>
         </div>
       ) : (
-        <div className="px-4 pt-3">
+        // Fills the screen above the bottom bar so the buttons sit at the bottom.
+        <div className="flex min-h-[calc(100dvh-45px-92px)] flex-col px-4 pt-3">
           {tabs.map((p, i) => {
             const st = passStyle(p.kind);
             return (
@@ -122,13 +123,7 @@ export default function PassesClient() {
           })}
           <PassCard pass={selected!} useBy={useBy(selected!.date)} />
 
-          <div className="mt-4 flex justify-center">
-            <div className="rounded-xl bg-white p-2.5 shadow-lg">
-              <QRCodeSVG value={selected!.token} size={150} level="M" />
-            </div>
-          </div>
-
-          <div className="mt-4 space-y-2.5">
+          <div className="mt-auto space-y-2.5 pb-3 pt-4">
             {staffError && (
               <p className="rounded-lg bg-red-500/15 px-3 py-1.5 text-center text-sm text-red-300">{staffError}</p>
             )}
@@ -188,15 +183,19 @@ function PassCard({ pass, useBy }: { pass: Pass; useBy: string }) {
       className={`relative z-20 overflow-hidden rounded-xl px-5 py-4 shadow-2xl ${redeemed ? "grayscale-[0.6]" : ""}`}
       style={{ backgroundImage: `linear-gradient(120deg, ${st.colors[0]}, ${st.colors[1]})` }}
     >
-      <div className="flex items-start justify-between gap-3">
-        <div className="min-w-0">
-          <p className="truncate text-[15px] font-bold text-white/80">{pass.venueName}</p>
-          <p className="text-[26px] font-bold leading-tight">{pass.name}</p>
+      <div className="min-w-0">
+        <p className="truncate text-[16px] font-bold text-white/80">{pass.venueName}</p>
+        <p className="text-[30px] font-bold leading-tight">{pass.name}</p>
+      </div>
+      <p className="absolute right-5 top-[72px] text-[15px]">Qty: {pass.quantity}</p>
+
+      <div className="mt-3 flex justify-center">
+        <div className="rounded-xl bg-white p-2.5 shadow-lg">
+          <QRCodeSVG value={pass.token} size={180} level="M" />
         </div>
-        <p className="shrink-0 pt-6 text-[15px] font-bold">Qty: {pass.quantity}</p>
       </div>
 
-      <div className="mt-4 flex items-end gap-8 text-[13px]">
+      <div className="mt-3 flex items-end gap-8 text-[13px]">
         <div className="min-w-0">
           <p className="text-white/75">Passholder</p>
           <p className="truncate text-base">{pass.holderName}</p>
