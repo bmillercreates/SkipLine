@@ -17,7 +17,7 @@ lives on GitHub, and every push to `main` redeploys the site automatically.
 3. **Add the signing secret:** in **Settings → Environment Variables**, add `PASS_SIGNING_SECRET` with a long random
    value. You can generate one with:
    `node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"`
-4. **Deploy.** The build creates the tables and seeds the 5 bars. After that, the site keeps the next 7 nights
+4. **Deploy.** The build creates the tables and seeds the 8 bars. After that, the site keeps the next 7 nights
    stocked on its own.
 
 Changing the secret makes all existing passes fail with "Invalid signature". That's expected, since they were
