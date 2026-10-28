@@ -8,12 +8,12 @@ college town of **Larkspur Falls**. No real payments are taken.
 
 ## Put it online (Vercel + GitHub)
 
-The site runs on [Vercel](https://vercel.com) with a free [Neon](https://neon.tech) Postgres database. The code
+The site runs on [Vercel](https://vercel.com) with a free Postgres database (Prisma Postgres or Neon). The code
 lives on GitHub, and every push to `main` redeploys the site automatically.
 
 1. **Import the repo:** in Vercel, click **Add New → Project** and import this GitHub repository. Don't deploy yet.
-2. **Add a database:** in the project, open **Storage → Create Database → Neon (Postgres)**, then connect it to the
-   project. This adds `DATABASE_URL` and `DATABASE_URL_UNPOOLED` for you.
+2. **Add a database:** in the project, open **Storage → Create Database**, pick **Prisma Postgres** or **Neon**,
+   and connect it to the project. This adds `DATABASE_URL` for you.
 3. **Add the signing secret:** in **Settings → Environment Variables**, add `PASS_SIGNING_SECRET` with a long random
    value. You can generate one with:
    `node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"`
@@ -46,7 +46,7 @@ You need Node.js 20+.
 1. `npm install`
 2. Create the `.env` file from `.env.example`. The easiest way is to install the Vercel CLI (`npm i -g vercel`)
    and run `vercel link` and then `vercel env pull .env`. That gives you the same database as the live site.
-   You can also point both URLs at a local Postgres instead.
+   You can also point `DATABASE_URL` at a local Postgres instead.
 3. `npm run dev`, then open http://localhost:3000.
 
 To wipe the database and reseed, run `npm run db:reset`. This also deletes every pass, including on the live

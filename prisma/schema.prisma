@@ -3,9 +3,8 @@ generator client {
 }
 
 datasource db {
-  provider  = "postgresql"
-  url       = env("DATABASE_URL") // pooled connection (used by the app)
-  directUrl = env("DATABASE_URL_UNPOOLED") // direct connection (used for schema changes)
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 model Venue {
