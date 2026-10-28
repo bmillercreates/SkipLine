@@ -19,9 +19,9 @@ type SeedVenue = {
 
 const VENUES: SeedVenue[] = [
   {
-    slug: "copper-kettle",
-    name: "The Copper Kettle",
-    shortName: "COPPER KETTLE",
+    slug: "brothers - iowa",
+    name: "Brothers - Iowa",
+    shortName: "BROTHERS - IOWA",
     address: "112 N Juniper St, Larkspur Falls",
     blurb: "Two-story sports bar with a rooftop patio and the loudest Thursday crowd in town.",
     hours: "Thu–Sat 8 PM – 2 AM",
@@ -32,9 +32,9 @@ const VENUES: SeedVenue[] = [
     prices: { skip: 1000, cover: 500, combo: 1400 },
   },
   {
-    slug: "neon-moose",
-    name: "Neon Moose",
-    shortName: "NEON MOOSE",
+    slug: "scout's-honor",
+    name: "Scout's Honor",
+    shortName: "SCOUT'S HONOR",
     address: "127 E Quarry St, Larkspur Falls",
     blurb: "Dance floor, light walls, and a DJ booth shaped like a moose head.",
     hours: "Wed–Sat 9 PM – 2 AM",
@@ -45,9 +45,9 @@ const VENUES: SeedVenue[] = [
     prices: { skip: 1500, cover: 1000, combo: 2200 },
   },
   {
-    slug: "pinecone-pub",
-    name: "Pinecone Pub",
-    shortName: "PINECONE",
+    slug: "fieldhouse - iowa city",
+    name: "Fieldhouse - Iowa City",
+    shortName: "FIELDHOUSE - IOWA CITY",
     address: "18 S Alder St, Larkspur Falls",
     blurb: "Cozy cabin-style pub with 30 taps and trivia every Tuesday.",
     hours: "Daily 4 PM – 1 AM",
@@ -57,9 +57,9 @@ const VENUES: SeedVenue[] = [
     prices: { skip: 800, cover: 300, combo: 1000 },
   },
   {
-    slug: "lantern-room",
-    name: "Lantern Room",
-    shortName: "LANTERN",
+    slug: "elray's",
+    name: "Elray's",
+    shortName: "ELRAY'S",
     address: "45 Foundry Ln, Larkspur Falls",
     blurb: "Speakeasy cocktails downstairs, live bands upstairs on weekends.",
     hours: "Thu–Sat 7 PM – 2 AM",
