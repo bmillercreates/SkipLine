@@ -6,7 +6,6 @@ import { useDemoUser } from "@/lib/useDemoUser";
 import { feeFor, usd } from "@/lib/money";
 import { passStyle } from "@/lib/passStyle";
 import { ChevronLeft, Tag } from "@/components/Icons";
-import DemoBadge from "@/components/DemoBadge";
 
 type Option = {
   id: string;
@@ -88,12 +87,9 @@ export default function CheckoutClient({ option }: { option: Option }) {
             </div>
           </div>
         </div>
-        <div className="mt-2 flex justify-end">
-          <DemoBadge />
-        </div>
       </div>
 
-      <p className="px-4 pb-4 pt-2 text-[15px] leading-snug text-white/55">
+      <p className="px-4 pb-4 pt-3 text-[15px] leading-snug text-white/55">
         <span className="font-bold text-white/70">{option.dateLabel}.</span>{" "}
         {expanded ? option.description : option.description.slice(0, 90) + "… "}
         {!expanded && (
